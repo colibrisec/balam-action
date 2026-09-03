@@ -1,0 +1,55 @@
+name: 'balam upload'
+description: 'Upload a scan report (Trivy, Semgrep, SARIF, ojo, etc.) to Balam via reimport-scan'
+branding:
+  icon: 'upload-cloud'
+  color: 'red'
+
+inputs:
+  file:
+    description: 'Path to the report file to upload'
+    required: true
+  scan-type:
+    description: "Balam scan_type, e.g. 'Trivy Scan', 'Semgrep JSON Report', 'SARIF', 'OJO Scan'"
+    required: true
+  balam-url:
+    description: 'Balam base URL'
+    required: true
+  balam-token:
+    description: 'Balam personal API token'
+    required: true
+  product-name:
+    description: 'Balam product name (auto-creates if missing). Alternative to product-id.'
+    default: ''
+  product-id:
+    description: 'Balam product UUID, alternative to product-name'
+    default: ''
+  engagement-name:
+    description: 'Balam engagement name (auto-creates if missing). Alternative to engagement-id.'
+    default: ''
+  engagement-id:
+    description: 'Balam engagement UUID, alternative to engagement-name'
+    default: ''
+  product-type-name:
+    description: 'Balam product type name (optional)'
+    default: ''
+  test-title:
+    description: 'Balam test title (optional)'
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload report to Balam
+      shell: bash
+      run: bash "${{ github.action_path }}/upload.sh"
+      env:
+        FILE: ${{ inputs.file }}
+        SCAN_TYPE: ${{ inputs.scan-type }}
+        BALAM_URL: ${{ inputs.balam-url }}
+        BALAM_TOKEN: ${{ inputs.balam-token }}
+        PRODUCT_NAME: ${{ inputs.product-name }}
+        PRODUCT_ID: ${{ inputs.product-id }}
+        ENGAGEMENT_NAME: ${{ inputs.engagement-name }}
+        ENGAGEMENT_ID: ${{ inputs.engagement-id }}
+        PRODUCT_TYPE_NAME: ${{ inputs.product-type-name }}
+        TEST_TITLE: ${{ inputs.test-title }}

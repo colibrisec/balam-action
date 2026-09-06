@@ -1,6 +1,5 @@
 # balam-action
-[![Marketplace](https://img.shields.io/badge/marketplace-ojo%20scan-blue?logo=github)](https://github.com/marketplace/actions/balam-upload)
-
+[![Marketplace](https://img.shields.io/badge/marketplace-balam%20upload-blue?logo=github)](https://github.com/marketplace/actions/balam-upload)
 [![Release](https://img.shields.io/github/v/release/colibrisec/balam-action?sort=semver)](https://github.com/colibrisec/balam-action/releases/latest)
 [![test](https://github.com/colibrisec/balam-action/actions/workflows/test.yml/badge.svg)](https://github.com/colibrisec/balam-action/actions/workflows/test.yml)
 
